@@ -5,6 +5,9 @@ import { ArchiveIcon } from '@heroicons/react/outline';
 import { useProfile } from '../hooks';
 import { UpdateProfile } from '../components';
 import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
+import { UpdateProfilePhoto } from '../components/UpdateProfilePhoto';
+import { useUpdateProfilePhoto } from '../hooks/useUpdateProfilePhoto';
+import { MouseOverPopoverProvider } from '@/components/Elements/MouseOverPopover/MouseOverPopover';
 
 type EntryProps = {
   label: string;
@@ -51,7 +54,16 @@ export const Profile = () => {
       <div className="bg-white shadow overflow-hidden sm:rounded-lg mt-8">
         <div className="px-4 py-5 sm:px-6">
           <div className="flex">
-            <img src={userImgSrc} alt={profile.username} className="h-32 w-32 rounded-full" />
+            <UpdateProfilePhoto>
+              <MouseOverPopoverProvider message="プロフィール写真を変更">
+                <img
+                  src={userImgSrc}
+                  alt={profile.username}
+                  className="h-32 w-32 rounded-full"
+                  style={{ maxWidth: 'none' }}
+                />
+              </MouseOverPopoverProvider>
+            </UpdateProfilePhoto>
             <div className="w-full ml-8">
               <div className="flex justify-between">
                 <h3 className="text-3xl leading-8 font-medium text-gray-900">{profile.username}</h3>

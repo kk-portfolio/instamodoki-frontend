@@ -222,8 +222,8 @@ const Sidebar = () => {
 const Logo = () => {
   return (
     <Link className="flex items-center text-white" to="./home">
-      <img className="h-8 mr-3 w-auto" src={logo} alt="Workflow" />
-      <span className="text-xl text-white font-semibold">{APPLICATION_NAME}</span>
+      <img className="h-8 mr-3 w-auto" src={logo} alt={APPLICATION_NAME} />
+      <span className="text-2xl text-white font-semibold logo">{APPLICATION_NAME}</span>
     </Link>
   );
 };
