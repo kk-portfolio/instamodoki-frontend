@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router';
 
-import logo from '@/assets/logo.svg';
+import logo from '@/assets/logo-pink-700.png';
+import mainImage from '@/assets/landing.jpg';
+
 import { Button } from '@/components/Elements';
 import { Head } from '@/components/Head';
 import { useAuth } from '@/lib/auth';
@@ -25,11 +27,12 @@ export const Landing = () => {
       <Head description={`Welcome to ${APPLICATION_NAME}`} />
       <div className="bg-white h-[100vh] flex items-center">
         <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            <span className="block">{APPLICATION_NAME}</span>
+          <h2 className="flex justify-center items-center">
+            <img className="h-16 mr-2 pb-1 w-auto" src={logo} alt={APPLICATION_NAME} />
+            <span className="text-4xl  text-pink-700 font-semibold logo">{APPLICATION_NAME}</span>
           </h2>
-          <img src={logo} alt="react" />
-          <p>Showcasing Best Practices For Building React Applications</p>
+          <img src={mainImage} alt={APPLICATION_NAME} className="shadow-xl m-2 w-4/5 mx-auto" />
+          <p>Instagramの基本機能を模倣したWebアプリケーションです</p>
           <div className="mt-8 flex justify-center">
             <div className="inline-flex rounded-md shadow">
               <Button
