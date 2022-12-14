@@ -8,6 +8,9 @@ import { useAuth } from '@/lib/auth';
 import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
 import { useProfile, useUpdateProfile } from '../hooks';
 import { UpdateProfileDTO } from '../types';
+import { UpdateProfilePhoto } from './UpdateProfilePhoto';
+import { useEffect, useState } from 'react';
+import { useUpdateProfilePhoto } from '../hooks/useUpdateProfilePhoto';
 
 const schema = z.object({
   username: z.string().min(1, 'Required'),
@@ -18,6 +21,7 @@ const schema = z.object({
 export const UpdateProfile = () => {
   const { user } = useAuth();
   const updateProfileMutation = useUpdateProfile();
+  const updateProfilePhotoMutation = useUpdateProfilePhoto();
   const { isLoading, data } = useProfile({});
 
   if (!user) return null;
@@ -53,6 +57,13 @@ export const UpdateProfile = () => {
       }
     >
       <>
+        <UpdateProfilePhoto>
+          <div className="flex items-center gap-4 ml-2 mb-8">
+            <img src={userImgSrc} alt="プロフィール画像" className="h-16 w-16 rounded-full" />
+            <div className="text-blue-500 text-sm">プロフィール写真を変更</div>
+          </div>
+        </UpdateProfilePhoto>
+
         <Form<UpdateProfileDTO['data'], typeof schema>
           id="update-profile"
           onSubmit={async (values) => {
