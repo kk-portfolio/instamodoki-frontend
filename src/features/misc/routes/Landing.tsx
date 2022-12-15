@@ -14,10 +14,8 @@ export const Landing = () => {
 
   const handleStart = () => {
     if (user) {
-      console.log('testtest');
       navigate(`${ROUTER_BASENAME}app/`);
     } else {
-      console.log('testtesttest');
       navigate(`${ROUTER_BASENAME}auth/login`);
     }
   };

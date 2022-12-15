@@ -4,7 +4,6 @@ import { Login } from './Login';
 import { Register } from './Register';
 
 export const AuthRoutes = () => {
-  console.log('AuthRoutes');
   return (
     <Routes>
       <Route path="register" element={<Register />} />

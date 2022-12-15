@@ -1,19 +1,14 @@
 import { useMutation } from 'react-query';
 
 import { useAuth } from '@/lib/auth';
-import { MutationConfig } from '@/lib/react-query';
 import { useNotificationStore } from '@/stores/notifications';
-import { useProfile } from '.';
+import { useMyProfile } from '.';
 import { updateProfile } from '../api';
 
-type UseUpdateProfileOptions = {
-  config?: MutationConfig<typeof updateProfile>;
-};
-
-export const useUpdateProfile = ({ config }: UseUpdateProfileOptions = {}) => {
+export const useUpdateProfile = () => {
   const { addNotification } = useNotificationStore();
   const { refetchUser } = useAuth();
-  const { refetch } = useProfile({});
+  const { refetch } = useMyProfile();
   return useMutation({
     onSuccess: () => {
       addNotification({
@@ -29,7 +24,6 @@ export const useUpdateProfile = ({ config }: UseUpdateProfileOptions = {}) => {
         title: 'プロフィールの更新に失敗しました',
       });
     },
-    ...config,
     mutationFn: updateProfile,
   });
 };

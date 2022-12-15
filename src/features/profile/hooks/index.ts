@@ -1,2 +1,4 @@
-export * from './useProfile';
+export * from './useMyProfile';
+export * from './useUerProfile';
 export * from './useUpdateProfile';
+export * from './useUpdateProfilePhoto';

@@ -1,7 +1,12 @@
-import { AuthUserProfile } from '@/features/auth';
+import { UserProfile } from '@/features/auth';
 
-export type MeDTO = {
-  profile: AuthUserProfile;
+export type MyProfileDTO = {
+  profile: UserProfile;
+};
+
+export type OtherProfileDTO = {
+  status: string;
+  data: MyProfileDTO;
 };
 
 export type UpdateProfileDTO = {
@@ -10,4 +15,9 @@ export type UpdateProfileDTO = {
     bio: string;
     website: string;
   };
+};
+
+export type FollowUnfollowUserDTO = {
+  id: string;
+  name: string;
 };

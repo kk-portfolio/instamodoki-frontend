@@ -29,7 +29,6 @@ axios.interceptors.response.use(
       title: 'Error',
       message,
     });
-
     return Promise.reject(error);
   }
 );
