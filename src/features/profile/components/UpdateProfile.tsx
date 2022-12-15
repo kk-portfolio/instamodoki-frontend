@@ -6,11 +6,9 @@ import { Form, FormDrawer, InputField, TextAreaField } from '@/components/Form';
 import { useAuth } from '@/lib/auth';
 
 import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
-import { useProfile, useUpdateProfile } from '../hooks';
+import { useMyProfile, useUpdateProfile } from '../hooks';
 import { UpdateProfileDTO } from '../types';
 import { UpdateProfilePhoto } from './UpdateProfilePhoto';
-import { useEffect, useState } from 'react';
-import { useUpdateProfilePhoto } from '../hooks/useUpdateProfilePhoto';
 
 const schema = z.object({
   username: z.string().min(1, 'Required'),
@@ -21,8 +19,7 @@ const schema = z.object({
 export const UpdateProfile = () => {
   const { user } = useAuth();
   const updateProfileMutation = useUpdateProfile();
-  const updateProfilePhotoMutation = useUpdateProfilePhoto();
-  const { isLoading, data } = useProfile({});
+  const { data } = useMyProfile();
 
   if (!user) return null;
 
@@ -40,7 +37,7 @@ export const UpdateProfile = () => {
     <FormDrawer
       isDone={updateProfileMutation.isSuccess}
       triggerButton={
-        <Button startIcon={<PencilIcon className="h-4 w-4" />} size="sm">
+        <Button startIcon={<PencilIcon className="h-5 w-5" />} size="sm">
           プロフィールを編集
         </Button>
       }

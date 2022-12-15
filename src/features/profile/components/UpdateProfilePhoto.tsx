@@ -18,11 +18,9 @@ export const UpdateProfilePhoto = ({
   const updateProfileMutation = useUpdateProfilePhoto();
 
   useEffect(() => {
-    console.log(croppedImgBlob);
     if (!croppedImgBlob) {
       return;
     }
-    // await updateProfileMutation.mutateAsync({ data: values });
     updateProfileMutation.mutate(croppedImgBlob);
 
     if (parentSetCroppedImgBlob) {

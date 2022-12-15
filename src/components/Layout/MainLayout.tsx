@@ -16,7 +16,7 @@ import logo from '@/assets/logo.png';
 import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
 import { useAuth } from '@/lib/auth';
 import { APPLICATION_NAME } from '@/config';
-import { useProfile } from '@/features/profile/hooks';
+import { useMyProfile } from '@/features/profile/hooks';
 import { useState } from 'react';
 import { PostNavLink } from '@/features/post';
 
@@ -81,7 +81,7 @@ type UserNavigationItem = {
 
 const UserNavigation = () => {
   const { logout } = useAuth();
-  const { data } = useProfile({});
+  const { data } = useMyProfile();
 
   const userImgSrc = data?.profile?.photo?.secure_url
     ? data.profile.photo.secure_url

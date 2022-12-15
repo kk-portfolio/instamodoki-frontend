@@ -20,7 +20,7 @@ export type Photo = {
   secure_url: string;
 };
 
-export type AuthUserProfile = {
+export type UserProfile = {
   user: string;
   bio: string;
   email: string;
@@ -32,6 +32,7 @@ export type AuthUserProfile = {
   following: Object;
   posts: Post[];
   photo: Photo;
+  id: string;
 
   // gender: string;
   // birthday: Date;
@@ -40,7 +41,7 @@ export type AuthUserProfile = {
 
 export type AuthData = {
   token: string;
-  profile: AuthUserProfile;
+  profile: UserProfile;
 };
 
 export type UserResponse = {
