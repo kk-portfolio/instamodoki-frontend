@@ -1,6 +1,9 @@
 export const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
 
 export const PASSWORD_MIN_LENGTH = import.meta.env.VITE_PASSWORD_MIN_LENGTH;
+export const PASSWORD_MAX_LENGTH = import.meta.env.VITE_PASSWORD_MAX_LENGTH;
+export const POSTCAPTION_MAX_LENGTH = import.meta.env.VITE_POSTCAPTION_MAX_LENGTH;
+
 export const STORAGE_PREFIX = import.meta.env.VITE_STORAGE_PREFIX;
 export const APPLICATION_NAME = import.meta.env.VITE_APPLICATION_NAME;
 export const ROUTER_BASENAME = import.meta.env.VITE_ROUTER_BASENAME;

@@ -17,6 +17,8 @@ import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
 import { useAuth } from '@/lib/auth';
 import { APPLICATION_NAME } from '@/config';
 import { useProfile } from '@/features/profile/hooks';
+import { useState } from 'react';
+import { PostNavLink } from '@/features/post';
 
 type SideNavigationItem = {
   name: string;
@@ -30,7 +32,6 @@ const SideNavigation = () => {
     { name: '検索', to: './search', icon: SearchIcon },
     { name: 'メッセージ', to: './message', icon: PaperAirplaneIcon },
     { name: 'お知らせ', to: './notification', icon: HeartIcon },
-    { name: '作成', to: './create', icon: PlusIcon },
   ].filter(Boolean) as SideNavigationItem[];
 
   const linkClass = clsx(
@@ -52,6 +53,22 @@ const SideNavigation = () => {
           {item.name}
         </NavLink>
       ))}
+      {/* <NavLink
+        onClick={(e) => {
+          e.preventDefault();
+          setPostModalOpen(true);
+        }}
+        to=".dummy"
+        className={({ isActive }) => (isActive ? linkActiveClass : linkClass)}
+      >
+        <PlusIcon className={clsx('mr-4 flex-shrink-0 h-6 w-6')} aria-hidden="true" />
+        投稿
+      </NavLink> */}
+
+      <PostNavLink className={linkClass} activeClassName={linkActiveClass}>
+        <PlusIcon className={clsx('mr-4 flex-shrink-0 h-6 w-6')} aria-hidden="true" />
+        投稿
+      </PostNavLink>
     </>
   );
 };

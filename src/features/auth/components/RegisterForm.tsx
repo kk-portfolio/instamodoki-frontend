@@ -6,12 +6,15 @@ import * as z from 'zod';
 import { Button } from '@/components/Elements';
 import { Form, InputField } from '@/components/Form';
 import { useAuth } from '@/lib/auth';
-import { PASSWORD_MIN_LENGTH } from '@/config';
+import { PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from '@/config';
 
 const schema = z
   .object({
     email: z.string().min(1, '入力が必須です'),
-    password: z.string().min(PASSWORD_MIN_LENGTH, `${PASSWORD_MIN_LENGTH}文字以上必要です`),
+    password: z
+      .string()
+      .min(PASSWORD_MIN_LENGTH, `${PASSWORD_MIN_LENGTH}文字以上必要です`)
+      .max(PASSWORD_MAX_LENGTH, `${PASSWORD_MAX_LENGTH}文字以内で入力してください`),
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
