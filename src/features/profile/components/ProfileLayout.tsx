@@ -64,9 +64,8 @@ export const ProfileLayout = ({
       <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-8">
         {profile.posts.map((post, index) => {
           return (
-            <div className="my-1">
+            <div className="my-1" key={index}>
               <img
-                key={index}
                 src={post.image[0].url}
                 className="shadow-xl rounded-lg cursor-pointer"
                 onClick={() => {
