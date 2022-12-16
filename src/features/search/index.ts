@@ -1,1 +1,1 @@
-export * from './routes/Search';
+export * from './routes';
