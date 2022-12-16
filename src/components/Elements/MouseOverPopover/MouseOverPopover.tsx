@@ -3,12 +3,26 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import { ReactNode } from 'react';
 
+type horizontalType = 'left' | 'center' | 'right';
+type verticalType = 'top' | 'center' | 'bottom';
+
 type MouseOverPopoverProviderProps = {
   message: string;
+  anchorOriginVertical?: verticalType;
+  anchorOriginHorizontal?: horizontalType;
+  transformOriginVertical?: verticalType;
+  transformOriginHorizontal?: horizontalType;
   children: ReactNode;
 };
 
-export const MouseOverPopoverProvider = ({ message, children }: MouseOverPopoverProviderProps) => {
+export const MouseOverPopoverProvider = ({
+  message,
+  anchorOriginVertical = 'center',
+  anchorOriginHorizontal = 'center',
+  transformOriginVertical = 'center',
+  transformOriginHorizontal = 'center',
+  children,
+}: MouseOverPopoverProviderProps) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -39,12 +53,12 @@ export const MouseOverPopoverProvider = ({ message, children }: MouseOverPopover
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: 'center',
-          horizontal: 'center',
+          vertical: anchorOriginVertical,
+          horizontal: anchorOriginHorizontal,
         }}
         transformOrigin={{
-          vertical: 'center',
-          horizontal: 'center',
+          vertical: transformOriginVertical,
+          horizontal: transformOriginHorizontal,
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus

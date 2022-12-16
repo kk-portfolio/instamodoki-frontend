@@ -3,8 +3,6 @@ import { useUserProfile } from '../hooks';
 import { useParams } from 'react-router-dom';
 import { NotFound, UserProfile } from './';
 import { MyProfile } from './MyProfile';
-import { OtherProfileDTO } from '../types';
-import { useCallback, useMemo, useState } from 'react';
 
 type ProfileParamsType = {
   name?: string;

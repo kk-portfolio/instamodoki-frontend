@@ -1,4 +1,4 @@
-import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
+import { ExtractFnReturnType } from '@/lib/react-query';
 import { useQuery } from 'react-query';
 import { fetchMyProfile } from '../api';
 

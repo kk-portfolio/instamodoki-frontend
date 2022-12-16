@@ -9,8 +9,8 @@ const { Home } = lazyImport(() => import('@/features/home'), 'Home');
 const { Search } = lazyImport(() => import('@/features/search'), 'Search');
 const { Message } = lazyImport(() => import('@/features/message'), 'Message');
 const { Notification } = lazyImport(() => import('@/features/notification'), 'Notification');
-
 const { Profile } = lazyImport(() => import('@/features/profile'), 'Profile');
+const { PostDetail } = lazyImport(() => import('@/features/post'), 'PostDetail');
 
 const App = () => {
   return (
@@ -41,6 +41,10 @@ export const protectedRoutes = [
         path: 'profile',
         element: <Profile />,
         children: [{ path: ':name', element: <Profile /> }],
+      },
+      {
+        path: 'post/:id',
+        element: <PostDetail />,
       },
       // { path: '/', element: <Dashboard /> },
       { path: '*', element: <Navigate to="." /> },

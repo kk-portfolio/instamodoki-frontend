@@ -1,3 +1,17 @@
-import { default as dayjs } from 'dayjs';
+import { formatDistance, format } from 'date-fns';
+import { ja } from 'date-fns/locale';
 
-export const formatDate = (date: number) => dayjs(date).format('MMMM D, YYYY h:mm A');
+export const formatDateDistance = (date: Date): string => {
+  const distance = formatDistance(new Date(), date, {
+    locale: ja,
+  });
+  if (distance.indexOf('未満') !== -1) {
+    return 'たった今';
+  }
+  if (distance.indexOf('か月') !== -1 || distance.indexOf('年') !== -1) {
+    return format(date, 'yyyy年M月d日', {
+      locale: ja,
+    });
+  }
+  return distance + '前';
+};

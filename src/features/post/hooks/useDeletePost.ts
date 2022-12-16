@@ -1,31 +1,29 @@
 import { useMutation } from 'react-query';
-import { MutationConfig } from '@/lib/react-query';
+
+import { useAuth } from '@/lib/auth';
 import { useNotificationStore } from '@/stores/notifications';
-import { postImage } from '../api/postImage';
+import { deletePost } from '../api';
 import { useMyProfile } from '@/features/profile/hooks';
 
-type usePostImageOptions = {
-  config?: MutationConfig<typeof postImage>;
-};
-
-export const usePostImage = ({ config }: usePostImageOptions = {}) => {
+export const useDeletePost = (id: string) => {
   const { addNotification } = useNotificationStore();
+  const { refetchUser } = useAuth();
   const { refetch } = useMyProfile();
   return useMutation({
     onSuccess: () => {
       addNotification({
         type: 'success',
-        title: '写真を投稿しました',
+        title: '投稿を削除しました',
       });
+      refetchUser();
       refetch();
     },
     onError: () => {
       addNotification({
         type: 'error',
-        title: '写真の投稿に失敗しました',
+        title: '投稿の削除に失敗しました',
       });
     },
-    ...config,
-    mutationFn: postImage,
+    mutationFn: deletePost,
   });
 };
