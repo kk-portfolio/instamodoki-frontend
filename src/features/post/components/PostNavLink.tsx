@@ -8,7 +8,7 @@ import { usePostImage } from '../hooks/usePostImage';
 import { SelectAndCropImage } from './SelectAndCropImage';
 import { useAuth } from '@/lib/auth';
 import { Button } from '@/components/Elements';
-import { PostImageDTO } from '../types';
+import { PostImageRequestDTO } from '../types';
 import { POSTCAPTION_MAX_LENGTH } from '@/config';
 import { MouseOverPopoverProvider } from '@/components/Elements/MouseOverPopover/MouseOverPopover';
 
@@ -68,7 +68,7 @@ export const PostNavLink = ({ className, activeClassName, children }: PostNavLin
             if (!croppedImgBlob) {
               return;
             }
-            const dto: PostImageDTO = {
+            const dto: PostImageRequestDTO = {
               caption: values.caption,
               image: croppedImgBlob,
             };

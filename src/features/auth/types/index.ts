@@ -10,9 +10,10 @@ export type Post = {
   id: string;
   image: PostImage[];
   likes: string[];
-  profile: string;
+  profile: UserProfile;
   user: string;
   _id: string;
+  createdAt: string;
 };
 
 export type Photo = {

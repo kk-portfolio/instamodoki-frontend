@@ -4,6 +4,9 @@ import { UserProfile } from '@/features/auth';
 import React, { ReactNode } from 'react';
 import { UpdateProfile, UpdateProfilePhoto } from '.';
 import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
+import { useNavigate } from 'react-router-dom';
+import { ROUTER_BASENAME } from '@/config';
+import { formatDateDistance } from '@/utils/format';
 
 type EntryProps = {
   label: string;
@@ -31,6 +34,7 @@ export const ProfileLayout = ({
   editOrFollowJSX,
   profile,
 }: ProfileLayoutProps) => {
+  const navigate = useNavigate();
   return (
     <ContentLayout title={pageTitle}>
       <div className="bg-white shadow overflow-hidden sm:rounded-lg mt-8">
@@ -60,14 +64,19 @@ export const ProfileLayout = ({
       <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-8">
         {profile.posts.map((post, index) => {
           return (
-            <img
-              key={index}
-              src={post.image[0].url}
-              className="shadow-xl rounded-lg cursor-pointer"
-              onClick={() => {
-                console.log(post.image[0].cloudinary_id);
-              }}
-            />
+            <div className="my-1">
+              <img
+                key={index}
+                src={post.image[0].url}
+                className="shadow-xl rounded-lg cursor-pointer"
+                onClick={() => {
+                  navigate(`${ROUTER_BASENAME}app/post/${post.id}`);
+                }}
+              />
+              <div className="text-gray-500 text-sm mt-2">
+                {formatDateDistance(new Date(post.createdAt))}
+              </div>
+            </div>
           );
         })}
       </div>
