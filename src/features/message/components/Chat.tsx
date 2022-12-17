@@ -60,7 +60,7 @@ export const Chat = () => {
   const { activeGroupId } = useContext(MessageContext);
   const { user: me } = useAuth();
   const { data: groupData } = useGroup();
-  const { data: messageData } = useMessage(activeGroupId);
+  const { data: messageData } = useMessage(activeGroupId, true);
   const postMessageMutate = usePostMessage(activeGroupId);
   const [newMessage, setNewMessage] = useState('');
 

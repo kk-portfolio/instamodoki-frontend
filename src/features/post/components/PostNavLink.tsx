@@ -11,6 +11,8 @@ import { Button } from '@/components/Elements';
 import { PostImageRequestDTO } from '../types';
 import { POSTCAPTION_MAX_LENGTH } from '@/config';
 import { MouseOverPopoverProvider } from '@/components/Elements/MouseOverPopover/MouseOverPopover';
+import { SideNavigationItem } from '@/components/Layout';
+import clsx from 'clsx';
 
 const schema = z.object({
   caption: z
@@ -24,12 +26,12 @@ type SubmitValues = {
 };
 
 type PostNavLinkProps = {
+  navConfig: SideNavigationItem;
   className: string;
   activeClassName: string;
-  children: ReactNode;
 };
 
-export const PostNavLink = ({ className, activeClassName, children }: PostNavLinkProps) => {
+export const PostNavLink = ({ navConfig, className, activeClassName }: PostNavLinkProps) => {
   const user = useAuth();
   const [open, setOpen] = useState(false);
   const [croppedImgBlob, setCroppedImgBlob] = useState<Blob | null>(null);
@@ -56,10 +58,12 @@ export const PostNavLink = ({ className, activeClassName, children }: PostNavLin
           e.preventDefault();
           setOpen(true);
         }}
-        to=".dummy"
+        key={navConfig.name}
+        to={navConfig.to}
         className={({ isActive }) => (isActive ? activeClassName : className)}
       >
-        {children}
+        <navConfig.icon className={clsx('mr-4 flex-shrink-0 h-6 w-6')} aria-hidden="true" />
+        {navConfig.name}
       </NavLink>
 
       <Modal open={open} title="写真を投稿">
