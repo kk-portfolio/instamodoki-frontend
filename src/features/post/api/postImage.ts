@@ -1,7 +1,7 @@
 import { axios } from '@/lib/axios';
-import { PostImageDTO } from '../types';
+import { PostImageRequestDTO } from '../types';
 
-export const postImage = ({ image, caption }: PostImageDTO) => {
+export const postImage = ({ image, caption }: PostImageRequestDTO) => {
   const data = new FormData();
   data.append('image', image, 'image.png');
   data.append('caption', caption);
