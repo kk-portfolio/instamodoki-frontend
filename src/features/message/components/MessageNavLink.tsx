@@ -29,8 +29,6 @@ export const MessageNavLink = ({
     });
   });
 
-  console.log(data?.notifications);
-
   return (
     <NavLink
       key={navConfig.name}

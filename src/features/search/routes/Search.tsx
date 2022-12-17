@@ -44,7 +44,6 @@ export const Search = () => {
         </div>
         <div className="grid gap-4 grid-cols-1 mt-8">
           {data?.users.map((user, index) => {
-            console.log(user.name);
             return <UserCard name={user.name} key={index} />;
           })}
         </div>
