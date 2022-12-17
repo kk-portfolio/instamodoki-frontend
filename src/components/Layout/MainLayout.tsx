@@ -19,8 +19,10 @@ import { APPLICATION_NAME } from '@/config';
 import { useMyProfile } from '@/features/profile/hooks';
 import { useState } from 'react';
 import { PostNavLink } from '@/features/post';
+import { NotificationNavLink } from '@/features/notification/components/NotificationNavLink';
+import { MessageNavLink } from '@/features/message/components/MessageNavLink';
 
-type SideNavigationItem = {
+export type SideNavigationItem = {
   name: string;
   to: string;
   icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
@@ -30,8 +32,6 @@ const SideNavigation = () => {
   const navigation = [
     { name: 'ホーム', to: './home', icon: HomeIcon },
     { name: '検索', to: './search', icon: SearchIcon },
-    { name: 'メッセージ', to: './message', icon: PaperAirplaneIcon },
-    { name: 'お知らせ', to: './notification', icon: HeartIcon },
   ].filter(Boolean) as SideNavigationItem[];
 
   const linkClass = clsx(
@@ -53,22 +53,24 @@ const SideNavigation = () => {
           {item.name}
         </NavLink>
       ))}
-      {/* <NavLink
-        onClick={(e) => {
-          e.preventDefault();
-          setPostModalOpen(true);
-        }}
-        to=".dummy"
-        className={({ isActive }) => (isActive ? linkActiveClass : linkClass)}
-      >
-        <PlusIcon className={clsx('mr-4 flex-shrink-0 h-6 w-6')} aria-hidden="true" />
-        投稿
-      </NavLink> */}
 
-      <PostNavLink className={linkClass} activeClassName={linkActiveClass}>
-        <PlusIcon className={clsx('mr-4 flex-shrink-0 h-6 w-6')} aria-hidden="true" />
-        投稿
-      </PostNavLink>
+      <MessageNavLink
+        navConfig={{ name: 'メッセージ', to: './message', icon: PaperAirplaneIcon }}
+        className={linkClass}
+        activeClassName={linkActiveClass}
+      />
+
+      <NotificationNavLink
+        navConfig={{ name: 'お知らせ', to: './notification', icon: HeartIcon }}
+        className={linkClass}
+        activeClassName={linkActiveClass}
+      />
+
+      <PostNavLink
+        navConfig={{ name: '投稿', to: './dummy', icon: PlusIcon }}
+        className={linkClass}
+        activeClassName={linkActiveClass}
+      />
     </>
   );
 };

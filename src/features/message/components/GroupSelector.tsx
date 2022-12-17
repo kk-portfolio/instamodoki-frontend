@@ -1,14 +1,16 @@
 import { useAuth } from '@/lib/auth';
 import { useContext } from 'react';
-import { useGroup } from '../hooks';
+import { useGroup, useMessageNotification } from '../hooks';
 import { MessageContext } from '../providers';
 import { AddGroup } from './AddGroup';
 import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
+import { Badge } from '@mui/material';
 
 export const GroupSelector = () => {
   const { user: me } = useAuth();
   const { data } = useGroup();
   const { activeGroupId, setActiveGroupId } = useContext(MessageContext);
+  const { data: msgData } = useMessageNotification();
 
   const groups = data?.groups;
 
@@ -28,6 +30,18 @@ export const GroupSelector = () => {
             ? destinationUser.photo.secure_url
             : userPhotoPlaceholder;
 
+          let badgeContent = 0;
+          console.log(msgData?.notifications);
+          msgData?.notifications.forEach((notification) => {
+            notification.message
+              .filter((msg) => msg.groupId === group._id)
+              .forEach((msg) => {
+                if (!msg.seen.includes(me.id)) {
+                  badgeContent++;
+                }
+              });
+          });
+
           return (
             <div
               onClick={() => {
@@ -35,10 +49,12 @@ export const GroupSelector = () => {
               }}
               className={`p-2 cursor-pointer flex justify-start items-center ${
                 activeGroupId === group._id ? 'bg-pink-100' : 'bg-gray-100'
-              } hover:opacity-80`}
+              } hover:opacity-80 w-full`}
               key={index}
             >
-              <img src={destinationUserPhotoURL} className="w-10 h-10 rounded-full" />
+              <Badge badgeContent={badgeContent} color="info" className="w-1/6 mr-2">
+                <img src={destinationUserPhotoURL} className="w-10 h-10 rounded-full" />
+              </Badge>
               <div>{group.users.filter((user) => user.id !== me.id)[0].username}</div>
             </div>
           );
