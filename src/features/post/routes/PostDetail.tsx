@@ -29,11 +29,8 @@ export const PostDetail = () => {
   if (!me) return <></>;
   if (!post) return <></>;
 
-  console.log(post);
-
   const isMyPost = me.name === post.profile.name;
   const isLike = post.likes.includes(me.id);
-  console.log(isLike);
 
   return (
     <ContentLayout title="投稿詳細">

@@ -31,7 +31,6 @@ export const GroupSelector = () => {
             : userPhotoPlaceholder;
 
           let badgeContent = 0;
-          console.log(msgData?.notifications);
           msgData?.notifications.forEach((notification) => {
             notification.message
               .filter((msg) => msg.groupId === group._id)
