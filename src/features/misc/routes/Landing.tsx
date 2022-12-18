@@ -69,7 +69,7 @@ export const Landing = () => {
   return (
     <>
       <Head description={`Welcome to ${APPLICATION_NAME}`} />
-      <div className="bg-white h-[100vh] flex items-center">
+      <div className="bg-pink-50 h-[100vh] flex items-center">
         <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
           <h2 className="flex justify-center items-center">
             <img className="h-16 mr-2 pb-1 w-auto" src={logo} alt={APPLICATION_NAME} />
