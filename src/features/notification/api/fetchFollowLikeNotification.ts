@@ -1,4 +1,5 @@
 import { axios } from '@/lib/axios';
+
 import { FollowLikeNotificationResponseDTO } from '../types';
 
 export const fetchFollowLikeNotification = (

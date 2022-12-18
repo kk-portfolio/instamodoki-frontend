@@ -1,5 +1,6 @@
-import { ROUTER_BASENAME } from '@/config';
 import { useNavigate } from 'react-router-dom';
+
+import { ROUTER_BASENAME } from '@/config';
 
 import { Layout } from '../components/Layout';
 import { RegisterForm } from '../components/RegisterForm';

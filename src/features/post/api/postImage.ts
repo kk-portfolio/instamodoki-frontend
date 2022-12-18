@@ -1,4 +1,5 @@
 import { axios } from '@/lib/axios';
+
 import { PostImageRequestDTO } from '../types';
 
 export const postImage = ({ image, caption }: PostImageRequestDTO) => {

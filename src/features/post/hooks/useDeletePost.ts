@@ -1,9 +1,10 @@
 import { useMutation } from 'react-query';
 
+import { useMyProfile } from '@/features/profile/hooks';
 import { useAuth } from '@/lib/auth';
 import { useNotificationStore } from '@/stores/notifications';
+
 import { deletePost } from '../api';
-import { useMyProfile } from '@/features/profile/hooks';
 
 export const useDeletePost = (id: string) => {
   const { addNotification } = useNotificationStore();

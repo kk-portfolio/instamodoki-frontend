@@ -43,6 +43,7 @@
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "lint": "eslint --fix --ext .js,.ts,.tsx ./src --ignore-path .gitignore",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\""
   },
   "browserslist": {
@@ -69,6 +70,7 @@
     "@typescript-eslint/parser": "^4.25.0",
     "@vitejs/plugin-react": "^3.0.0",
     "autoprefixer": "^10.4.13",
+    "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-cypress": "^2.11.3",

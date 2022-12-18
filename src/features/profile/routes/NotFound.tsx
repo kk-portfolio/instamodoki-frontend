@@ -1,7 +1,8 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Button } from '@/components/Elements';
 import { ContentLayout } from '@/components/Layout';
 import { ROUTER_BASENAME } from '@/config';
-import { useNavigate } from 'react-router-dom';
 
 export const NotFound = () => {
   const navigate = useNavigate();

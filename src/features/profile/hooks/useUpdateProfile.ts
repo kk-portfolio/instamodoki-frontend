@@ -2,8 +2,10 @@ import { useMutation } from 'react-query';
 
 import { useAuth } from '@/lib/auth';
 import { useNotificationStore } from '@/stores/notifications';
-import { useMyProfile } from '.';
+
 import { updateProfile } from '../api';
+
+import { useMyProfile } from '.';
 
 export const useUpdateProfile = () => {
   const { addNotification } = useNotificationStore();

@@ -1,5 +1,4 @@
-import { formatDistance, format } from 'date-fns';
-import { ja } from 'date-fns/locale';
+import { formatDistance, format, ja } from 'date-fns';
 
 export const formatDateDistance = (date: Date): string => {
   const distance = formatDistance(new Date(), date, {

@@ -1,6 +1,9 @@
 import { useMutation } from 'react-query';
+
 import { useNotificationStore } from '@/stores/notifications';
+
 import { createGroup } from '../api';
+
 import { useGroup } from './useGroup';
 
 export const useCreateGroup = () => {

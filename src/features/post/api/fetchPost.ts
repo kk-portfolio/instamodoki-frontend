@@ -1,4 +1,5 @@
 import { axios } from '@/lib/axios';
+
 import { PostDetailResponseDTO } from '../types';
 
 export const fetchPost = (id: string): Promise<PostDetailResponseDTO> => {

@@ -1,13 +1,14 @@
 import { PencilIcon } from '@heroicons/react/solid';
 import * as z from 'zod';
 
+import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
 import { Button, Spinner } from '@/components/Elements';
 import { Form, FormDrawer, InputField, TextAreaField } from '@/components/Form';
 import { useAuth } from '@/lib/auth';
 
-import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
 import { useMyProfile, useUpdateProfile } from '../hooks';
 import { UpdateProfileDTO } from '../types';
+
 import { UpdateProfilePhoto } from './UpdateProfilePhoto';
 
 const schema = z.object({

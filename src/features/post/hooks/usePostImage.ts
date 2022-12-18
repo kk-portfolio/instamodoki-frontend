@@ -1,14 +1,18 @@
 import { useMutation } from 'react-query';
+
+import { useMyProfile } from '@/features/profile/hooks';
+import { useAuth } from '@/lib/auth';
 import { MutationConfig } from '@/lib/react-query';
 import { useNotificationStore } from '@/stores/notifications';
+
 import { postImage } from '../api/postImage';
-import { useMyProfile } from '@/features/profile/hooks';
 
 type usePostImageOptions = {
   config?: MutationConfig<typeof postImage>;
 };
 
 export const usePostImage = ({ config }: usePostImageOptions = {}) => {
+  const { refetchUser } = useAuth();
   const { addNotification } = useNotificationStore();
   const { refetch } = useMyProfile();
   return useMutation({
@@ -17,6 +21,7 @@ export const usePostImage = ({ config }: usePostImageOptions = {}) => {
         type: 'success',
         title: '写真を投稿しました',
       });
+      refetchUser();
       refetch();
     },
     onError: () => {

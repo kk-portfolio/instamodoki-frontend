@@ -1,12 +1,14 @@
+import { useNavigate } from 'react-router-dom';
+
+import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
+import { MouseOverPopoverProvider } from '@/components/Elements';
 import { ROUTER_BASENAME } from '@/config';
 import { useUserProfile } from '@/features/profile/hooks';
 import { useFollowUnfollowUser } from '@/features/profile/hooks/useFollowUnfollowUser';
 import { FollowUnfollowUserDTO } from '@/features/profile/types';
 import { useAuth } from '@/lib/auth';
-import { useNavigate } from 'react-router-dom';
-import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
+
 import { IconButton } from '.';
-import { MouseOverPopoverProvider } from '@/components/Elements';
 
 type UserCardProps = {
   name: string;

@@ -1,4 +1,5 @@
 import { axios } from '@/lib/axios';
+
 import { PostMessageResponseDTO } from '../types';
 
 type PostMessageOptions = {

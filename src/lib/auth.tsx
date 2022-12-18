@@ -1,6 +1,7 @@
 import { initReactQueryAuth } from 'react-query-auth';
 
 import { Spinner } from '@/components/Elements';
+import { ROUTER_BASENAME } from '@/config';
 import {
   loginWithEmailAndPassword,
   getUser,
@@ -42,7 +43,7 @@ async function registerFn(data: RegisterCredentialsDTO) {
 
 async function logoutFn() {
   storage.clearToken();
-  window.location.assign(window.location.origin as unknown as string);
+  window.location.assign(`${window.location.origin}${ROUTER_BASENAME}`);
 }
 
 const authConfig = {

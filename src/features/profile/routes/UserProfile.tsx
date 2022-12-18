@@ -1,9 +1,11 @@
+import { MinusCircleIcon, PlusCircleIcon } from '@heroicons/react/outline';
+
+import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
+import { Button } from '@/components/Elements';
+import { useAuth } from '@/lib/auth';
+
 import { ProfileLayout } from '../components';
 import { useUserProfile } from '../hooks';
-import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
-import { useAuth } from '@/lib/auth';
-import { Button } from '@/components/Elements';
-import { MinusCircleIcon, PlusCircleIcon } from '@heroicons/react/outline';
 import { useFollowUnfollowUser } from '../hooks/useFollowUnfollowUser';
 import { FollowUnfollowUserDTO } from '../types';
 

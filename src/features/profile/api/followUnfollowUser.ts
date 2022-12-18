@@ -1,4 +1,5 @@
 import { axios } from '@/lib/axios';
+
 import { FollowUnfollowUserDTO } from '../types';
 
 type followUnfollowUserOptions = {

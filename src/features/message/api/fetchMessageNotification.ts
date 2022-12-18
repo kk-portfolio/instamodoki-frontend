@@ -1,4 +1,5 @@
 import { axios } from '@/lib/axios';
+
 import { MessageNotificationResponseDTO } from '../../notification/types';
 
 export const fetchMessageNotification = (): Promise<MessageNotificationResponseDTO> => {

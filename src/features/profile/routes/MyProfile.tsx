@@ -1,7 +1,8 @@
+import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
 import { MouseOverPopoverProvider } from '@/components/Elements';
+
 import { ProfileLayout, UpdateProfile, UpdateProfilePhoto } from '../components';
 import { useMyProfile } from '../hooks';
-import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
 
 export const MyProfile = () => {
   const { data } = useMyProfile();

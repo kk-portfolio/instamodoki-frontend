@@ -3,6 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 import { Spinner } from '@/components/Elements';
 import { MainLayout } from '@/components/Layout';
+import { ROUTER_BASENAME } from '@/config';
 import { lazyImport } from '@/utils/lazyImport';
 
 const { Home } = lazyImport(() => import('@/features/home'), 'Home');
@@ -30,7 +31,7 @@ const App = () => {
 
 export const protectedRoutes = [
   {
-    path: '/app',
+    path: `${ROUTER_BASENAME}app`,
     element: <App />,
     children: [
       { path: 'home', element: <Home /> },

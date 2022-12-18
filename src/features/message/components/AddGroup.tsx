@@ -1,10 +1,13 @@
-import { Button, Modal, MouseOverPopoverProvider } from '@/components/Elements';
-import { useSearchUser } from '@/features/search/hooks';
-import { useAuth } from '@/lib/auth';
 import clsx from 'clsx';
 import React, { useState } from 'react';
 import { BsPencilSquare } from 'react-icons/bs';
+
+import { Button, Modal, MouseOverPopoverProvider } from '@/components/Elements';
+import { useSearchUser } from '@/features/search/hooks';
+import { useAuth } from '@/lib/auth';
+
 import { useGroup } from '../hooks';
+
 import { AddGroupCard } from './AddGroupCard';
 
 export const AddGroup = () => {

@@ -1,5 +1,7 @@
-import { ExtractFnReturnType } from '@/lib/react-query';
 import { useQuery } from 'react-query';
+
+import { ExtractFnReturnType } from '@/lib/react-query';
+
 import { searchUser } from '../api';
 
 type QueryFnType = typeof searchUser;

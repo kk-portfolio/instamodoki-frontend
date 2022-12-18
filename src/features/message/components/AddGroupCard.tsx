@@ -1,7 +1,8 @@
+import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
 import { useUserProfile } from '@/features/profile/hooks';
 import { FollowUnfollowUserDTO } from '@/features/profile/types';
 import { useAuth } from '@/lib/auth';
-import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
+
 import { useCreateGroup } from '../hooks';
 
 type UserCardProps = {

@@ -1,4 +1,5 @@
 import { axios } from '@/lib/axios';
+
 import { FetchMessageResponseDTO } from '../types';
 
 export const fetchMessages = (

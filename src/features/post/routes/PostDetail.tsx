@@ -1,10 +1,12 @@
+import { HeartIcon, TrashIcon } from '@heroicons/react/solid';
+import { useNavigate, useParams } from 'react-router-dom';
+
 import { MouseOverPopoverProvider } from '@/components/Elements';
 import { ContentLayout } from '@/components/Layout';
 import { ROUTER_BASENAME } from '@/config';
 import { useAuth } from '@/lib/auth';
 import { formatDateDistance } from '@/utils/format';
-import { HeartIcon, TrashIcon } from '@heroicons/react/solid';
-import { useNavigate, useParams } from 'react-router-dom';
+
 import { ConfirmDelete } from '../components/ConfirmDelete';
 import { usePost } from '../hooks';
 import { useDeletePost } from '../hooks/useDeletePost';

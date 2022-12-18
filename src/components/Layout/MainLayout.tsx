@@ -10,17 +10,17 @@ import {
 } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import * as React from 'react';
+import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 import logo from '@/assets/logo.png';
 import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
-import { useAuth } from '@/lib/auth';
 import { APPLICATION_NAME } from '@/config';
-import { useMyProfile } from '@/features/profile/hooks';
-import { useState } from 'react';
-import { PostNavLink } from '@/features/post';
-import { NotificationNavLink } from '@/features/notification/components/NotificationNavLink';
 import { MessageNavLink } from '@/features/message/components/MessageNavLink';
+import { NotificationNavLink } from '@/features/notification/components/NotificationNavLink';
+import { PostNavLink } from '@/features/post';
+import { useMyProfile } from '@/features/profile/hooks';
+import { useAuth } from '@/lib/auth';
 
 export type SideNavigationItem = {
   name: string;
