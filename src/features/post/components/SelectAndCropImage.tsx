@@ -3,8 +3,6 @@ import React, { ReactNode, useEffect, useState } from 'react';
 import { SelectImageWithCrop } from '@/components/Elements/SelectImageWithCrop';
 import { useAuth } from '@/lib/auth';
 
-import { usePostImage } from '../hooks/usePostImage';
-
 type SelectAndCropImageProps = {
   parentSetCroppedImgBlob?: React.Dispatch<React.SetStateAction<Blob | null>>;
   children: ReactNode;
@@ -24,6 +22,7 @@ export const SelectAndCropImage = ({
     if (parentSetCroppedImgBlob) {
       parentSetCroppedImgBlob(croppedImgBlob);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [croppedImgBlob]);
 
   if (!user) return null;

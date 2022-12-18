@@ -10,7 +10,6 @@ import {
 } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import * as React from 'react';
-import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 import logo from '@/assets/logo.png';
@@ -25,6 +24,7 @@ import { useAuth } from '@/lib/auth';
 export type SideNavigationItem = {
   name: string;
   to: string;
+  // eslint-disable-next-line no-unused-vars, no-undef
   icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
 };
 

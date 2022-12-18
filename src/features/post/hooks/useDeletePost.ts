@@ -6,7 +6,7 @@ import { useNotificationStore } from '@/stores/notifications';
 
 import { deletePost } from '../api';
 
-export const useDeletePost = (id: string) => {
+export const useDeletePost = () => {
   const { addNotification } = useNotificationStore();
   const { refetchUser } = useAuth();
   const { refetch } = useMyProfile();

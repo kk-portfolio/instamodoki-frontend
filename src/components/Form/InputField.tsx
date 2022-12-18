@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import React from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
 import { FieldWrapper, FieldWrapperPassThroughProps } from './FieldWrapper';
@@ -14,17 +15,7 @@ type InputFieldProps = FieldWrapperPassThroughProps & {
 };
 
 export const InputField = (props: InputFieldProps) => {
-  const {
-    type = 'text',
-    label,
-    className,
-    registration,
-    error,
-    placeholder,
-    ref,
-    name,
-    onBlur,
-  } = props;
+  const { type = 'text', label, className, registration, error, placeholder, onBlur } = props;
   return (
     <FieldWrapper label={label} error={error}>
       <input
@@ -36,9 +27,6 @@ export const InputField = (props: InputFieldProps) => {
         placeholder={placeholder}
         {...registration}
         onBlur={onBlur}
-
-        // ref={ref}
-        // name={name}
       />
     </FieldWrapper>
   );

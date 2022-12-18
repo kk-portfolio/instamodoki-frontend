@@ -1,4 +1,3 @@
-import { Switch } from '@headlessui/react';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import * as z from 'zod';
@@ -47,7 +46,7 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
           shouldUnregister: true,
         }}
       >
-        {({ register, formState, watch }) => (
+        {({ register, formState }) => (
           <>
             <InputField
               type="email"

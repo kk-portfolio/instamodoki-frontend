@@ -27,6 +27,7 @@ export const UpdateProfilePhoto = ({
     if (parentSetCroppedImgBlob) {
       parentSetCroppedImgBlob(croppedImgBlob);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [croppedImgBlob]);
 
   if (!user) return null;

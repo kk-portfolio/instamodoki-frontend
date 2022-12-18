@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { nanoid } from 'nanoid';
 import create from 'zustand';
 

@@ -4,7 +4,6 @@ export * from './Dialog';
 export * from './Drawer';
 export * from './Link';
 export * from './Spinner';
-export * from './Table';
 export * from './MouseOverPopover';
 export * from './SelectImageWithCrop';
 export * from './Modal';

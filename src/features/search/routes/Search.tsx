@@ -9,7 +9,7 @@ import { UserCard } from '../components';
 import { useSearchUser } from '../hooks';
 
 export const Search = () => {
-  const [searchText, setSearchText] = useState(storage.getValue('UserSearchQuery') as string);
+  const [searchText, setSearchText] = useState<string>(storage.getValue('UserSearchQuery'));
 
   const { data } = useSearchUser(searchText);
 
@@ -27,6 +27,7 @@ export const Search = () => {
               'w-full bg-white border border-gray-300 text-gray-900 text-lg ',
               'focus:ring-blue-500 focus:border-blue-500 block  p-2.5 '
             )}
+            defaultValue={''}
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);

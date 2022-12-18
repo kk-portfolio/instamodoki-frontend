@@ -47,7 +47,7 @@ export default async function getCroppedImg(
   ctx.putImageData(data, 0, 0);
 
   // canvasを画像に変換
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const imgType = 'image/png';
     const dataUrl = canvas.toDataURL(imgType);
     const bin = atob(dataUrl.split(',')[1]);

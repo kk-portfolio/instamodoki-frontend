@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { AxiosError } from 'axios';
 import { QueryClient, UseQueryOptions, UseMutationOptions, DefaultOptions } from 'react-query';
 import { PromiseValue } from 'type-fest';

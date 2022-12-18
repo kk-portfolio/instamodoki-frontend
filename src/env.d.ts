@@ -11,6 +11,7 @@ interface ImportMetaEnv {
   readonly VITE_GITHUB_REPO_URI: string;
 }
 
+// eslint-disable-next-line no-unused-vars
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }

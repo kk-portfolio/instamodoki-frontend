@@ -1,11 +1,12 @@
+/* eslint-disable react/display-name */
 import React, { useState, useCallback, ReactNode, forwardRef, useRef } from 'react';
 import { Area, MediaSize } from 'react-easy-crop';
 
-// import "./styles.css";
 import CropperModal from './CropperModal';
 import getCroppedImg from './getCroppedImg';
 
 type HiddenInputProps = {
+  // eslint-disable-next-line no-unused-vars
   onFileInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -91,6 +92,7 @@ export const SelectImageWithCrop = ({
     const result = cropWidth / width;
     setZoom(result);
     setMinZoom(result);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /**
@@ -111,6 +113,7 @@ export const SelectImageWithCrop = ({
     } catch (e) {
       console.error(e);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [croppedAreaPixels, imgSrc]);
 
   return (

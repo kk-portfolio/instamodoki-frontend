@@ -11,6 +11,7 @@ export const DynamicHeroIcon = ({
 }: DynamicHeroIconProps) => {
   const { ...icons } = HIcons;
   // @ts-ignore
+  // eslint-disable-next-line no-undef
   const TheIcon: JSX.Element = icons[icon];
 
   return (
