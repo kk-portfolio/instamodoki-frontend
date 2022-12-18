@@ -1,7 +1,8 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 
-import { useAuth } from '@/lib/auth';
 import { SelectImageWithCrop } from '@/components/Elements/SelectImageWithCrop';
+import { useAuth } from '@/lib/auth';
+
 import { useUpdateProfilePhoto } from '../hooks/useUpdateProfilePhoto';
 
 type UpdateProfilePhotoProps = {

@@ -1,3 +1,3 @@
-export * from "./CropperModal";
-export * from "./SelectImageWithCrop";
-export * from "./getCroppedImg";
+export * from './CropperModal';
+export * from './SelectImageWithCrop';
+export * from './getCroppedImg';

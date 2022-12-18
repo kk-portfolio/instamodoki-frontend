@@ -1,9 +1,11 @@
-import { ContentLayout } from '@/components/Layout';
-import { ROUTER_BASENAME } from '@/config';
-import { formatDateDistance } from '@/utils/format';
 import clsx from 'clsx';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { ContentLayout } from '@/components/Layout';
+import { ROUTER_BASENAME } from '@/config';
+import { formatDateDistance } from '@/utils/format';
+
 import { useFollowLikeNotification } from '../hooks';
 import { FollowLikeNotification } from '../types';
 

@@ -1,18 +1,19 @@
+import { ArchiveIcon } from '@heroicons/react/outline';
+import { HeartIcon } from '@heroicons/react/solid';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
+import { MouseOverPopoverProvider } from '@/components/Elements';
 import { ContentLayout } from '@/components/Layout';
 import { ROUTER_BASENAME } from '@/config';
 import { Post } from '@/features/auth';
-import { fetchPost } from '@/features/post/api';
+import { usePost } from '@/features/post/hooks';
+import { useLikePost } from '@/features/post/hooks/useLikePost';
 import { fetchUserProfile } from '@/features/profile/api';
 import { useMyProfile } from '@/features/profile/hooks';
 import { useAuth } from '@/lib/auth';
 import { formatDateDistance } from '@/utils/format';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
-import { MouseOverPopoverProvider } from '@/components/Elements';
-import { HeartIcon } from '@heroicons/react/solid';
-import { useLikePost } from '@/features/post/hooks/useLikePost';
-import { usePost } from '@/features/post/hooks';
 
 type HomePostDTO = {
   name: string;
@@ -81,13 +82,21 @@ const HomePostCard = ({ dto }: HomePostCardProps) => {
   );
 };
 
+const NoPosts = () => {
+  return (
+    <>
+      <div className="flex flex-col items-center justify-center text-gray-500 bg-pink-50 h-80">
+        <ArchiveIcon className="w-16 h-16" />
+        ご自分かフォロワーの投稿をここに表示します
+      </div>{' '}
+    </>
+  );
+};
+
 export const Home = () => {
   const { user: me } = useAuth();
   const { data } = useMyProfile();
-
   const [posts, setPosts] = useState<HomePostDTO[]>([]);
-
-  if (!me) return <></>;
 
   const sortFn = (a: HomePostDTO, b: HomePostDTO) => {
     if (a.post.createdAt > b.post.createdAt) return -1;
@@ -95,7 +104,9 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    const myPostDTO = me.posts.map((post) => {
+    if (!me?.posts) return;
+
+    const myPostDTO = me?.posts.map((post) => {
       const dto: HomePostDTO = {
         name: me.name,
         username: me.username,
@@ -104,7 +115,7 @@ export const Home = () => {
       };
       return dto;
     });
-    setPosts(myPostDTO);
+    if (myPostDTO) setPosts(myPostDTO);
 
     if (!data?.profile) return;
 
@@ -132,11 +143,17 @@ export const Home = () => {
 
   return (
     <ContentLayout title="Home">
-      <div className="grid gap-8 grid-cols-1 lg:grid-cols-2 mt-4">
-        {posts.sort(sortFn).map((dto, index) => {
-          return <HomePostCard dto={dto} key={index} />;
-        })}
-      </div>
+      {posts.length > 0 ? (
+        <div className="grid gap-8 grid-cols-1 lg:grid-cols-2 mt-4">
+          {posts.sort(sortFn).map((dto, index) => {
+            return <HomePostCard dto={dto} key={index} />;
+          })}
+        </div>
+      ) : (
+        <div className="mt-4">
+          <NoPosts />
+        </div>
+      )}
     </ContentLayout>
   );
 };

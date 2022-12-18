@@ -1,4 +1,5 @@
 import { axios } from '@/lib/axios';
+
 import { OtherProfileDTO } from '../types';
 
 export const fetchUserProfile = (name: string): Promise<OtherProfileDTO> => {

@@ -1,13 +1,15 @@
+import clsx from 'clsx';
+import { useEffect, useState } from 'react';
+
 import { Button } from '@/components/Elements';
 import { ContentLayout } from '@/components/Layout';
 import storage from '@/utils/storage';
-import clsx from 'clsx';
-import { useEffect, useState } from 'react';
+
 import { UserCard } from '../components';
 import { useSearchUser } from '../hooks';
 
 export const Search = () => {
-  const [searchText, setSearchText] = useState(storage.getValue('UserSearchQuery'));
+  const [searchText, setSearchText] = useState(storage.getValue('UserSearchQuery') as string);
 
   const { data } = useSearchUser(searchText);
 

@@ -1,7 +1,9 @@
-import { SideNavigationItem } from '@/components/Layout';
 import { Badge } from '@mui/material';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
+
+import { SideNavigationItem } from '@/components/Layout';
+
 import { useFollowLikeNotification } from '../hooks';
 
 type NotificationNavLinkProps = {

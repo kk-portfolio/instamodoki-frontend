@@ -2,8 +2,10 @@ import { useMutation } from 'react-query';
 
 import { useAuth } from '@/lib/auth';
 import { useNotificationStore } from '@/stores/notifications';
-import { usePost } from './usePost';
+
 import { likePost } from '../api';
+
+import { usePost } from './usePost';
 
 export const useLikePost = (id: string) => {
   const { addNotification } = useNotificationStore();

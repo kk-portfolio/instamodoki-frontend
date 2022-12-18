@@ -1,13 +1,15 @@
-import { useAuth } from '@/lib/auth';
 import React, { useContext, useState } from 'react';
+import { FiSend } from 'react-icons/fi';
+
+import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
+import { UserProfile } from '@/features/auth';
+import { useAuth } from '@/lib/auth';
+import { formatDateDistance } from '@/utils/format';
+
 import { useGroup, usePostMessage } from '../hooks';
 import { useMessage } from '../hooks/useMessage';
 import { MessageContext } from '../providers';
-import { FiSend } from 'react-icons/fi';
-import { Message } from '../types';
-import { UserProfile } from '@/features/auth';
-import { formatDateDistance } from '@/utils/format';
-import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
+import { Group, Message } from '../types';
 
 const NotSelected = () => {
   return (
@@ -67,10 +69,12 @@ export const Chat = () => {
   const groups = groupData?.groups;
   if (!groups) return <NotSelected />;
 
-  const messages = messageData?.messages;
+  const messages = messageData?.messages ? messageData?.messages : [];
   if (!messages) return <NotSelected />;
 
   const activeGroup = groups.filter((group) => group._id === activeGroupId)[0];
+  if (!activeGroup) return <NotSelected />;
+
   const destinationUser = activeGroup.users.filter((user) => user.name !== me?.name)[0];
 
   const handleSubmit = () => {
@@ -100,7 +104,7 @@ export const Chat = () => {
         style={{ height: 'calc(100% - 96px)' }}
       >
         <div>
-          {messages.map((message, index) => (
+          {messages?.map((message, index) => (
             <MessageBaloon message={message} destinationUser={destinationUser} key={index} />
           ))}
         </div>

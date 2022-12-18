@@ -1,4 +1,5 @@
 import { axios } from '@/lib/axios';
+
 import { SearchUserResponseDTO } from '../types';
 
 export const searchUser = (text: string): Promise<SearchUserResponseDTO> => {

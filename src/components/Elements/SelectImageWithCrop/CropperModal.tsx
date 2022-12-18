@@ -1,6 +1,7 @@
 import { makeStyles, Modal, Slider } from '@material-ui/core';
 import React from 'react';
 import Cropper, { Area, MediaSize } from 'react-easy-crop';
+
 import { Button } from '../Button';
 const useStyles = makeStyles({
   root: {

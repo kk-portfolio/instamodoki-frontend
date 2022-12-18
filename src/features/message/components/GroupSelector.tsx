@@ -1,10 +1,13 @@
-import { useAuth } from '@/lib/auth';
+import { Badge } from '@mui/material';
 import { useContext } from 'react';
+
+import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
+import { useAuth } from '@/lib/auth';
+
 import { useGroup, useMessageNotification } from '../hooks';
 import { MessageContext } from '../providers';
+
 import { AddGroup } from './AddGroup';
-import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
-import { Badge } from '@mui/material';
 
 export const GroupSelector = () => {
   const { user: me } = useAuth();

@@ -1,9 +1,11 @@
-import { SideNavigationItem } from '@/components/Layout';
-import { useAuth } from '@/lib/auth';
 import { Badge } from '@mui/material';
 import clsx from 'clsx';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+
+import { SideNavigationItem } from '@/components/Layout';
+import { useAuth } from '@/lib/auth';
+
 import { useMessageNotification } from '../hooks';
 
 type NotificationNavLinkProps = {

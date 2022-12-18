@@ -1,8 +1,12 @@
-import { useAuth } from '@/lib/auth';
-import { useUserProfile } from '../hooks';
 import { useParams } from 'react-router-dom';
-import { NotFound, UserProfile } from './';
+
+import { useAuth } from '@/lib/auth';
+
+import { useUserProfile } from '../hooks';
+
 import { MyProfile } from './MyProfile';
+
+import { NotFound, UserProfile } from './';
 
 type ProfileParamsType = {
   name?: string;

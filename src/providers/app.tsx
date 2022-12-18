@@ -7,6 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import { Button, Spinner } from '@/components/Elements';
 import { Notifications } from '@/components/Notifications/Notifications';
+import { ROUTER_BASENAME } from '@/config';
 import { AuthProvider } from '@/lib/auth';
 import { queryClient } from '@/lib/react-query';
 
@@ -17,7 +18,12 @@ const ErrorFallback = () => {
       role="alert"
     >
       <h2 className="text-lg font-semibold">エラーが発生しました。</h2>
-      <Button className="mt-4" onClick={() => window.location.assign(window.location.origin)}>
+      <Button
+        className="mt-4"
+        onClick={() => {
+          window.location.assign(`${window.location.origin}${ROUTER_BASENAME}`);
+        }}
+      >
         Refresh
       </Button>
     </div>

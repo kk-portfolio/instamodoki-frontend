@@ -1,5 +1,6 @@
 import React, { useState, useCallback, ReactNode, forwardRef, useRef } from 'react';
 import { Area, MediaSize } from 'react-easy-crop';
+
 // import "./styles.css";
 import CropperModal from './CropperModal';
 import getCroppedImg from './getCroppedImg';

@@ -2,8 +2,10 @@ import { useMutation } from 'react-query';
 
 import { useAuth } from '@/lib/auth';
 import { useNotificationStore } from '@/stores/notifications';
-import { useMyProfile, useUserProfile } from '.';
+
 import { followUnfollowUser } from '../api';
+
+import { useMyProfile, useUserProfile } from '.';
 
 export const useFollowUnfollowUser = (name: string) => {
   const { addNotification } = useNotificationStore();
