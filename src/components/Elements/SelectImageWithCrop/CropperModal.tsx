@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { makeStyles, Modal, Slider } from '@material-ui/core';
 import React from 'react';
 import Cropper, { Area, MediaSize } from 'react-easy-crop';

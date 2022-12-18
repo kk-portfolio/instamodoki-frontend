@@ -9,7 +9,7 @@ import { formatDateDistance } from '@/utils/format';
 import { useGroup, usePostMessage } from '../hooks';
 import { useMessage } from '../hooks/useMessage';
 import { MessageContext } from '../providers';
-import { Group, Message } from '../types';
+import { Message } from '../types';
 
 const NotSelected = () => {
   return (

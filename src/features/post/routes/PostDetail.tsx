@@ -24,7 +24,7 @@ export const PostDetail = () => {
   const { data } = usePost(postId);
   const navigate = useNavigate();
   const likePostMutation = useLikePost(postId);
-  const deletePostMutation = useDeletePost(postId);
+  const deletePostMutation = useDeletePost();
 
   const post = data?.post;
 

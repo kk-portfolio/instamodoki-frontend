@@ -1,14 +1,10 @@
 import React, { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import userPhotoPlaceholder from '@/assets/portrait-placeholder.png';
-import { MouseOverPopoverProvider } from '@/components/Elements';
 import { ContentLayout } from '@/components/Layout';
 import { ROUTER_BASENAME } from '@/config';
 import { UserProfile } from '@/features/auth';
 import { formatDateDistance } from '@/utils/format';
-
-import { UpdateProfile, UpdateProfilePhoto } from '.';
 
 type EntryProps = {
   label: string;

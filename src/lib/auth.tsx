@@ -14,8 +14,6 @@ import {
 import storage from '@/utils/storage';
 
 async function handleUserResponse(userResponse: UserResponse) {
-  // const { jwt, user } = data;
-  // storage.setToken(jwt);
   const { data } = userResponse;
   storage.setToken(data.token);
   return data.profile;

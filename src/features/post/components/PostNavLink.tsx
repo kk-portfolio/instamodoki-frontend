@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import * as z from 'zod';
 
@@ -86,7 +86,7 @@ export const PostNavLink = ({ navConfig, className, activeClassName }: PostNavLi
           schema={schema}
           mode="all"
         >
-          {({ register, formState, getValues }) => {
+          {({ register, formState }) => {
             const validCaption = formState.errors.caption?.message ? false : true;
             const validImage = croppedImgBlob ? true : false;
             const enableSubmit = validCaption && validImage;
