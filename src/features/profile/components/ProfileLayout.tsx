@@ -65,7 +65,7 @@ export const ProfileLayout = ({
             <div className="my-1" key={index}>
               <img
                 src={post.image[0].url}
-                className="shadow-xl rounded-lg cursor-pointer w-full"
+                className="shadow-xl rounded-lg cursor-pointer"
                 onClick={() => {
                   navigate(`${ROUTER_BASENAME}app/post/${post.id}`);
                 }}
