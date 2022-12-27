@@ -7,7 +7,11 @@ import { Head } from '@/components/Head';
 import { APPLICATION_NAME, GITHUB_REPO_URI, ROUTER_BASENAME } from '@/config';
 import { useAuth } from '@/lib/auth';
 
-const GetStartedButton = () => {
+type ButtonProps = {
+  className?: string;
+};
+
+const GetStartedButton = ({ className = '' }: ButtonProps) => {
   const navigate = useNavigate();
   const { user } = useAuth();
 
@@ -21,6 +25,7 @@ const GetStartedButton = () => {
 
   return (
     <Button
+      className={className}
       onClick={handleStart}
       startIcon={
         <svg
@@ -44,10 +49,11 @@ const GetStartedButton = () => {
   );
 };
 
-const GithubRepoButton = () => {
+const GithubRepoButton = ({ className = '' }: ButtonProps) => {
   return (
     <a href={GITHUB_REPO_URI} target="_blank" rel="noreferrer">
       <Button
+        className={className}
         variant="inverse"
         startIcon={
           <svg fill="currentColor" viewBox="0 0 24 24" className="h-6 w-6">
@@ -77,13 +83,9 @@ export const Landing = () => {
           </h2>
           <img src={mainImage} alt={APPLICATION_NAME} className="shadow-xl m-2 w-4/5 mx-auto" />
           <p>Instagramの基本機能を模倣したWebアプリケーションです</p>
-          <div className="mt-8 flex justify-center">
-            <div className="inline-flex rounded-md shadow">
-              <GetStartedButton />
-            </div>
-            <div className="ml-3 inline-flex">
-              <GithubRepoButton />
-            </div>
+          <div className="mt-8 flex flex-col sm:flex-row sm:justify-center sm:gap-4">
+            <GetStartedButton className="w-48 mx-auto sm:mx-0 my-1" />
+            <GithubRepoButton className="w-48 mx-auto sm:mx-0 my-1" />
           </div>
         </div>
       </div>

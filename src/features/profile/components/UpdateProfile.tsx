@@ -38,8 +38,13 @@ export const UpdateProfile = () => {
     <FormDrawer
       isDone={updateProfileMutation.isSuccess}
       triggerButton={
-        <Button startIcon={<PencilIcon className="h-5 w-5" />} size="sm">
-          プロフィールを編集
+        <Button startIcon={<PencilIcon className="h-5 w-5" />} size="sm" className="w-24 md:w-48">
+          <div className="visible w-full h-full md:invisible md:h-0 md:w-0 text-xs md:text-base">
+            編集
+          </div>
+          <div className="invisible w-0 h-0 md:visible md:w-full md:h-full text-xs md:text-sm ">
+            プロフィール編集
+          </div>
         </Button>
       }
       title="プロフィールを編集"

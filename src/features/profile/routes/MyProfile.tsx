@@ -18,7 +18,7 @@ export const MyProfile = () => {
         <img
           src={userImgSrc}
           alt={profile.username}
-          className="h-32 w-32 rounded-full"
+          className="w-12 h-12 md:w-20 md:h-20 lg:w-32 lg:h-32 rounded-full"
           style={{ maxWidth: 'none' }}
         />
       </MouseOverPopoverProvider>

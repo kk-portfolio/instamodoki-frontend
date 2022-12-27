@@ -9,11 +9,11 @@ export const Message = () => {
     <MessageProvider>
       <ContentLayout title="Message">
         <div className="mt-4">
-          <div className="flex gap-2 bg-white" style={{ height: '85vh' }}>
-            <div className="w-2/5 bg-gray-50">
+          <div className="flex flex-col sm:flex-row gap-2 bg-white ">
+            <div className="bg-gray-50 w-full h-30v sm:w-2/5 sm:h-80v">
               <GroupSelector />
             </div>
-            <div className="w-3/5 bg-gray-50">
+            <div className="bg-gray-50 w-full h-50v sm:w-3/5 sm:h-80v">
               <Chat />
             </div>
           </div>
