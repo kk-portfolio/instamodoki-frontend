@@ -19,12 +19,12 @@ export const Search = () => {
 
   return (
     <ContentLayout title="Search">
-      <div className="mt-4 w-4/5 mx-auto">
+      <div className="mt-4 w-full sm:w-4/5 mx-auto">
         <div className="flex ">
           <input
             type="text"
             className={clsx(
-              'w-full bg-white border border-gray-300 text-gray-900 text-lg ',
+              'w-full bg-white border border-gray-300 text-gray-900 text-xs sm:text-sm md:text-base lg:text-lg ',
               'focus:ring-blue-500 focus:border-blue-500 block  p-2.5 '
             )}
             defaultValue={''}

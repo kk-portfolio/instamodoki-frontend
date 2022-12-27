@@ -39,15 +39,29 @@ export const ProfileLayout = ({
         <div className="px-4 py-5 sm:px-6">
           <div className="flex">
             {photoJSX}
-            <div className="w-full ml-8">
+            <div className="w-full ml-4 sm:ml-6 md:ml-8">
               <div className="flex justify-between">
-                <h3 className="text-3xl leading-8 font-medium text-gray-900">{profile.username}</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl leading-8 font-medium text-gray-900">
+                  {profile.username}
+                </h3>
                 {editOrFollowJSX}
               </div>
-              <div className="flex justify-start gap-8 mt-6">
-                <div className="text-lg">投稿：{profile.posts.length}件</div>
-                <div className="text-lg">フォロワー: {Object.keys(profile.followers).length}人</div>
-                <div className="text-lg">フォロー中：{Object.keys(profile.following).length}人</div>
+              <div className="flex justify-start gap-2 md:gap-8 mt-6">
+                <div className="text-sm lg:text-lg text-center">
+                  投稿：
+                  <div className="visible w-0 h-0 block lg:invisible lg:inline-block" />
+                  {profile.posts.length}件
+                </div>
+                <div className="text-sm lg:text-lg text-center">
+                  フォロワー:
+                  <div className="visible w-0 h-0 block lg:invisible lg:inline-block" />
+                  {Object.keys(profile.followers).length}人
+                </div>
+                <div className="text-sm lg:text-lg text-center">
+                  フォロー中：
+                  <div className="visible w-0 h-0 block lg:invisible lg:inline-block" />
+                  {Object.keys(profile.following).length}人
+                </div>
               </div>
             </div>
           </div>
