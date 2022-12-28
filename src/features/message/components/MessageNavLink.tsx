@@ -12,12 +12,14 @@ type NotificationNavLinkProps = {
   navConfig: SideNavigationItem;
   className: string;
   activeClassName: string;
+  setSidebarOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const MessageNavLink = ({
   navConfig,
   className,
   activeClassName,
+  setSidebarOpen,
 }: NotificationNavLinkProps) => {
   const { user: me } = useAuth();
   const { data } = useMessageNotification();
@@ -36,6 +38,10 @@ export const MessageNavLink = ({
       key={navConfig.name}
       to={navConfig.to}
       className={({ isActive }) => (isActive ? activeClassName : className)}
+      onClick={() => {
+        if (!setSidebarOpen) return;
+        setSidebarOpen(false);
+      }}
     >
       <Badge badgeContent={badgeContent} color="primary">
         <navConfig.icon className={clsx('mr-4 flex-shrink-0 h-6 w-6')} aria-hidden="true" />
