@@ -10,6 +10,7 @@ import {
 } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import * as React from 'react';
+import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 import logo from '@/assets/logo.png';
@@ -18,6 +19,7 @@ import { APPLICATION_NAME } from '@/config';
 import { MessageNavLink } from '@/features/message/components/MessageNavLink';
 import { NotificationNavLink } from '@/features/notification/components/NotificationNavLink';
 import { PostNavLink } from '@/features/post';
+import { PostModal } from '@/features/post/components/PostModal';
 import { useMyProfile } from '@/features/profile/hooks';
 import { useAuth } from '@/lib/auth';
 
@@ -28,7 +30,12 @@ export type SideNavigationItem = {
   icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
 };
 
-const SideNavigation = () => {
+type SideNavigationProps = {
+  setPostModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSidebarOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const SideNavigation = ({ setPostModalOpen, setSidebarOpen }: SideNavigationProps) => {
   const navigation = [
     { name: 'ホーム', to: './home', icon: HomeIcon },
     { name: '検索', to: './search', icon: SearchIcon },
@@ -48,6 +55,10 @@ const SideNavigation = () => {
           key={item.name}
           to={item.to}
           className={({ isActive }) => (isActive ? linkActiveClass : linkClass)}
+          onClick={() => {
+            if (!setSidebarOpen) return;
+            setSidebarOpen(false);
+          }}
         >
           <item.icon className={clsx('mr-4 flex-shrink-0 h-6 w-6')} aria-hidden="true" />
           {item.name}
@@ -58,18 +69,22 @@ const SideNavigation = () => {
         navConfig={{ name: 'メッセージ', to: './message', icon: PaperAirplaneIcon }}
         className={linkClass}
         activeClassName={linkActiveClass}
+        setSidebarOpen={setSidebarOpen}
       />
 
       <NotificationNavLink
         navConfig={{ name: 'お知らせ', to: './notification', icon: HeartIcon }}
         className={linkClass}
         activeClassName={linkActiveClass}
+        setSidebarOpen={setSidebarOpen}
       />
 
       <PostNavLink
         navConfig={{ name: '投稿', to: './dummy', icon: PlusIcon }}
         className={linkClass}
         activeClassName={linkActiveClass}
+        setPostModalOpen={setPostModalOpen}
+        setSidebarOpen={setSidebarOpen}
       />
     </>
   );
@@ -150,10 +165,11 @@ const UserNavigation = () => {
 
 type MobileSidebarProps = {
   sidebarOpen: boolean;
+  setPostModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const MobileSidebar = ({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) => {
+const MobileSidebar = ({ sidebarOpen, setPostModalOpen, setSidebarOpen }: MobileSidebarProps) => {
   return (
     <Transition.Root show={sidebarOpen} as={React.Fragment}>
       <Dialog
@@ -208,7 +224,10 @@ const MobileSidebar = ({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) => {
             </div>
             <div className="mt-5 flex-1 h-0 overflow-y-auto">
               <nav className="px-2 space-y-1">
-                <SideNavigation />
+                <SideNavigation
+                  setPostModalOpen={setPostModalOpen}
+                  setSidebarOpen={setSidebarOpen}
+                />
               </nav>
             </div>
           </div>
@@ -219,7 +238,11 @@ const MobileSidebar = ({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) => {
   );
 };
 
-const Sidebar = () => {
+type SidebarProps = {
+  setPostModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Sidebar = ({ setPostModalOpen }: SidebarProps) => {
   return (
     <div className="hidden md:flex md:flex-shrink-0">
       <div className="flex flex-col w-64">
@@ -229,7 +252,7 @@ const Sidebar = () => {
           </div>
           <div className="flex-1 flex flex-col overflow-y-auto">
             <nav className="flex-1 px-2 py-4 bg-pink-800 space-y-1">
-              <SideNavigation />
+              <SideNavigation setPostModalOpen={setPostModalOpen} />
             </nav>
           </div>
         </div>
@@ -252,29 +275,38 @@ type MainLayoutProps = {
 };
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
-  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [postModalOpen, setPostModalOpen] = useState(false);
 
   return (
-    <div className="h-screen flex overflow-hidden bg-pink-100">
-      <MobileSidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      <Sidebar />
-      <div className="flex flex-col w-0 flex-1 overflow-hidden">
-        <div className="relative z-10 flex-shrink-0 flex h-16 bg-white shadow">
-          <button
-            className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
-            onClick={() => setSidebarOpen(true)}
-          >
-            <span className="sr-only">Open sidebar</span>
-            <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
-          </button>
-          <div className="flex-1 px-4 flex justify-end">
-            <div className="ml-4 flex items-center md:ml-6">
-              <UserNavigation />
+    <>
+      <div className="h-screen flex overflow-hidden bg-pink-100">
+        <MobileSidebar
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+          setPostModalOpen={setPostModalOpen}
+        />
+        <Sidebar setPostModalOpen={setPostModalOpen} />
+        <div className="flex flex-col w-0 flex-1 overflow-hidden">
+          <div className="relative z-10 flex-shrink-0 flex h-16 bg-white shadow">
+            <button
+              className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
+              onClick={() => setSidebarOpen(true)}
+            >
+              <span className="sr-only">Open sidebar</span>
+              <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
+            </button>
+            <div className="flex-1 px-4 flex justify-end">
+              <div className="ml-4 flex items-center md:ml-6">
+                <UserNavigation />
+              </div>
             </div>
           </div>
+          <main className="flex-1 relative overflow-y-auto focus:outline-none">{children}</main>
         </div>
-        <main className="flex-1 relative overflow-y-auto focus:outline-none">{children}</main>
       </div>
-    </div>
+
+      <PostModal open={postModalOpen} setOpen={setPostModalOpen} />
+    </>
   );
 };
