@@ -9,7 +9,11 @@ type QueryFnType = typeof fetchMessages;
 export const useMessage = (groupId: string, seen: boolean = false) => {
   return useQuery<ExtractFnReturnType<QueryFnType>>({
     queryKey: [`message_${groupId}`],
-    queryFn: () => fetchMessages(groupId, seen),
+    queryFn: () => {
+      return seen
+        ? fetchMessages(groupId, true).then(() => fetchMessages(groupId, false))
+        : fetchMessages(groupId, false);
+    },
     onSuccess: () => {},
     onError: () => {},
   });
